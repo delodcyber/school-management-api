@@ -1,11 +1,5 @@
 const mongoose = require("mongoose");
-
-// Helper function to convert a string to title case
-function toTitleCase(str) {
-  return str.replace(/\w\S*/g, (txt) => {
-    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-  });
-}
+const { toTitleCase } = require("../utils/stringHelpers");
 
 const studentSchema = new mongoose.Schema(
   {

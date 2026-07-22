@@ -1,0 +1,401 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "School API",
+    "description": "RESTful API for managing students and courses using Node.js, Express, MongoDB, and Mongoose.",
+    "version": "1.0.0"
+  },
+  "host": "localhost:5000/api-docs",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/students/": {
+      "get": {
+        "tags": [
+          "Students"
+        ],
+        "summary": "Get all students",
+        "description": "Returns a list of all students stored in the database.",
+        "responses": {
+          "200": {
+            "description": "Students retrieved successfully.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Student"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Students"
+        ],
+        "summary": "Create a new student",
+        "description": "Creates a new student record. All required fields must be provided.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Student"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Student created successfully. Returns the newly created student.",
+            "schema": {
+              "$ref": "#/definitions/Student"
+            }
+          },
+          "400": {
+            "description": "Validation failed."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      }
+    },
+    "/students/{id}": {
+      "get": {
+        "tags": [
+          "Students"
+        ],
+        "summary": "Get a student by ID",
+        "description": "Returns a single student matching the supplied MongoDB ObjectId.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "MongoDB ObjectId of the student"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Student retrieved successfully.",
+            "schema": {
+              "$ref": "#/definitions/Student"
+            }
+          },
+          "404": {
+            "description": "Student not found."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Students"
+        ],
+        "summary": "Update a student",
+        "description": "Updates an existing student using the supplied MongoDB ObjectId.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "MongoDB ObjectId of the student"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Student"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Student updated successfully. Returns the updated student.",
+            "schema": {
+              "$ref": "#/definitions/Student"
+            }
+          },
+          "400": {
+            "description": "Validation failed."
+          },
+          "404": {
+            "description": "Student not found."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Students"
+        ],
+        "summary": "Delete a student",
+        "description": "Deletes a student matching the supplied MongoDB ObjectId.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "MongoDB ObjectId of the student"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Student deleted successfully."
+          },
+          "404": {
+            "description": "Student not found."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      }
+    },
+    "/courses/": {
+      "get": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Get all courses",
+        "description": "Returns a list of all courses stored in the database.",
+        "responses": {
+          "200": {
+            "description": "Courses retrieved successfully.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Course"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Create a new course",
+        "description": "Creates a new course. All required fields must be provided.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Course"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Course created successfully. Returns the newly created course.",
+            "schema": {
+              "$ref": "#/definitions/Course"
+            }
+          },
+          "400": {
+            "description": "Validation failed."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      }
+    },
+    "/courses/{id}": {
+      "get": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Get a course by ID",
+        "description": "Returns a single course matching the supplied MongoDB ObjectId.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "MongoDB ObjectId of the course"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Course retrieved successfully.",
+            "schema": {
+              "$ref": "#/definitions/Course"
+            }
+          },
+          "404": {
+            "description": "Course not found."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Update a course",
+        "description": "Updates an existing course using the supplied MongoDB ObjectId.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "MongoDB ObjectId of the course"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Course"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Course updated successfully. Returns the updated course.",
+            "schema": {
+              "$ref": "#/definitions/Course"
+            }
+          },
+          "400": {
+            "description": "Validation failed."
+          },
+          "404": {
+            "description": "Course not found."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Delete a course",
+        "description": "Deletes a course matching the supplied MongoDB ObjectId.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "MongoDB ObjectId of the course"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Course deleted successfully."
+          },
+          "404": {
+            "description": "Course not found."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Student": {
+      "type": "object",
+      "properties": {
+        "studentId": {
+          "type": "string",
+          "example": "ST001"
+        },
+        "firstName": {
+          "type": "string",
+          "example": "John"
+        },
+        "lastName": {
+          "type": "string",
+          "example": "Doe"
+        },
+        "email": {
+          "type": "string",
+          "example": "john.doe@example.com"
+        },
+        "department": {
+          "type": "string",
+          "example": "Computer Science"
+        },
+        "level": {
+          "type": "number",
+          "example": 300
+        },
+        "gpa": {
+          "type": "number",
+          "example": 3.75
+        },
+        "enrollmentDate": {
+          "type": "string",
+          "example": "2023-09-15"
+        }
+      }
+    },
+    "Course": {
+      "type": "object",
+      "properties": {
+        "courseCode": {
+          "type": "string",
+          "example": "CSC301"
+        },
+        "courseTitle": {
+          "type": "string",
+          "example": "Database Systems"
+        },
+        "department": {
+          "type": "string",
+          "example": "Computer Science"
+        },
+        "creditUnits": {
+          "type": "number",
+          "example": 3
+        },
+        "semester": {
+          "type": "string",
+          "example": "Winter"
+        },
+        "lecturer": {
+          "type": "string",
+          "example": "Dr. Ahmed Bello"
+        },
+        "capacity": {
+          "type": "number",
+          "example": 120
+        }
+      }
+    }
+  }
+}

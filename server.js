@@ -1,5 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger.json");
 
 dotenv.config();
 
@@ -9,6 +11,11 @@ const app = express();
 connectDB();
 
 app.use(express.json());
+app.use(
+  "/api-docs",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerDocument)
+);
 app.use("/students", require("./routes/student"));
 app.use("/courses", require("./routes/course"));
 
