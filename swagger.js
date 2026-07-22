@@ -7,7 +7,7 @@ const doc = {
       "RESTful API for managing students and courses using Node.js, Express, MongoDB, and Mongoose."
   },
 
-  host: "localhost:5000/api-docs",
+  host: "school-api-hqbp.onrender.com",
   basePath: "/",
 
   schemes: ["https"],
