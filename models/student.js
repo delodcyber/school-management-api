@@ -64,12 +64,15 @@ const studentSchema = new mongoose.Schema(
       enum: {
         values: [
           "Computer Science",
-          "Mathematics",
-          "Physics",
-          "Engineering",
-          "Business",
-          "Arts",
-          "Social Sciences"
+          "Computer Engineering",
+          "Information Technology",
+          "Software Engineering",
+          "Cybersecurity",
+          "Data Science",
+          "Information Systems",
+          "Artificial Intelligence",
+          "Network Engineering",
+          "Cloud Computing"
         ],
         message: "{VALUE} is not a valid department"
       },
